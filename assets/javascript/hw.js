@@ -1,19 +1,23 @@
- 
+
      // Grabbing and storing the data-animal property value from the button
 
      var shows = ["Gilmore girls" , "Rick and Morty" , "Inuyasha" , "The Office"]
 
-     var show = $(this).attr("data-attribute");
+     $("show-btn").on("click", function() {
+      // Grabbing and storing the data-animal property value from the button
+      var show = $(this).attr("data-attribute");
 
-     // Constructing a queryURL using the animal name
-     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-       show + "&api_key=dc6zaTOxFJmzC&limit=10";
+      // Constructing a queryURL using the animal name
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        show + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-     // Performing an AJAX request with the queryURL
-     $.ajax({
-       url: queryURL,
-       method: "GET"
-     }).then(function(displayShowInfo) {
+      // Performing an AJAX request with the queryURL
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        // After data comes back from the request
+        .then(function(response) {
           console.log(queryURL);
 
           console.log(response);
@@ -36,12 +40,14 @@
 
             // Appending the paragraph and image tag to the animalDiv
             showDiv.append(p);
-            showDiv.append(showImage);
+            showDiv.append(animalImage);
 
             // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
             $("#gifsappear").prepend(showDiv);
           }
         });
+    });
+
 
    $(".gif").on("click", function() {
       // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
@@ -94,8 +100,8 @@
           renderButtons();
         });
 
-        // Adding a click event listener to all elements with a class of "movie-btn"
-        $(document).on("click", ".show-btn", displayShowInfo);
+        // Adding a click event listener to all ements with a class of "movie-btn"
+        // $(document).on("click", ".show-btn", showDiv);
 
         // Calling the renderButtons function to display the intial buttons
         renderButtons();
