@@ -1,21 +1,22 @@
 
-     // Grabbing and storing the data-animal property value from the button
+// variable that holds all the pre-set Buttons
 
      var shows = ["Gilmore girls" , "Rick and Morty" , "Inuyasha" , "The Office"]
 
+
+//this function goes through the shows array and displays the buttons and gives them properties.
      function renderButtons() {
 
-           // Deleting the movies prior to adding new movies
-           // (this is necessary otherwise you will have repeat buttons)
+        // deletes old buttons so that they do not repeat and re-posts them each time function called
            $("#buttons-view").empty();
 
-           // Looping through the array of movies
+           // Looping through the array of shows
            for (var i = 0; i < shows.length; i++) {
 
-             // Then dynamicaly generating buttons for each movie in the array
+             // Then dynamicaly generating buttons for each show in the array
              // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
              var a = $("<button>");
-             // Adding a class of movie-btn to our button
+             // Adding a class of show-btn to our button
              a.addClass("show-btn");
              // Adding a data-attribute
              a.attr("data-name", shows[i]);
@@ -26,17 +27,18 @@
            }
          }
 
-         // This function handles events where a movie button is clicked
+         // This function handles events where a show button is clicked
          $("#add-show").on("click", function(event) {
            event.preventDefault();
            // This line grabs the input from the textbox
-           var showInput = $("#show-input").val().trim();
+           var show = $("#show-input").val().trim();
 
-           // Adding movie from the textbox to our array
-           shows.push(showInput);
+           // Adding show from the textbox to our array
+           shows.push(show);
 
            // Calling renderButtons which handles the processing of our movie array
            renderButtons();
+           newButton();
          });
 
          // Adding a click event listener to all ements with a class of "movie-btn"
@@ -104,7 +106,7 @@ function newButton() {
 });
 }
 
-
+newButton();
    //   $("button").on("click", function() {
    //    // Grabbing and storing the data-animal property value from the button
    //    var show = $(this).attr("data-name");
