@@ -1,0 +1,24 @@
+body {
+  background-color: grey;
+}
+
+
+.newDiv {
+float: left;
+margin: 20px;
+border: 5px;
+border-color: pink;
+border-style: solid;
+}
+
+#topRow {
+  margin-bottom: 50px;
+}
+
+#gifsappear {
+  text-align: center;
+  border: 10px;
+  border-color: pink;
+  border-style: solid;
+  background-color: white;
+}
